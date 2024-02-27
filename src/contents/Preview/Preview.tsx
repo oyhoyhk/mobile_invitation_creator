@@ -59,7 +59,7 @@ export default function Preview() {
         className="cursive"
         style={{ fontSize: "2.5rem", marginTop: "var(--margin-top)" }}
       >
-        Loction
+        Location
       </div>
       <Location />
       <Transportation />

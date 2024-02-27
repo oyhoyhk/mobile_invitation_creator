@@ -1,0 +1,30 @@
+:root {
+  font-family: "Noto Serif KR", serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --margin-top: 50px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  scrollbar-width: 0;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.cursive {
+  font-family: "Pinyon Script", cursive;
+}

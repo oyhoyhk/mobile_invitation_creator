@@ -1,23 +1,29 @@
 import { useEffect, useState } from "react";
 
-const CLIENT_ID = 'm0vdg7v93s'
+declare global {
+  interface Window {
+    naver: unknown;
+  }
+}
 
 export default function useNaverMap() {
-    const [naverMap, setNaverMap] = useState<unknown>(null);
-    useEffect(()=>{
-        const script = document.createElement("script");
-        script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${CLIENT_ID}`
-        script.async = true;
-        document.body.appendChild(script);
-    
-        script.onload = () => {
-          initMap();
-        };
+  const [naverMap, setNaverMap] = useState<unknown>(null);
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${
+      import.meta.env.VITE_CLIENT_ID
+    }`;
+    script.async = true;
+    document.body.appendChild(script);
 
-        function initMap() {
-            setNaverMap(window['naver'] as unknown);
-        }
-    }, [])
+    script.onload = () => {
+      initMap();
+    };
 
-    return naverMap;
+    function initMap() {
+      setNaverMap(window.naver || null);
+    }
+  }, []);
+
+  return naverMap;
 }

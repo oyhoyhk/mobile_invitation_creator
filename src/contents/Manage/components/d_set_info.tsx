@@ -10,7 +10,7 @@ export default function SetInfo() {
     setInfo({ ...info, [e.target.name]: e.target.value });
   };
   return (
-    <SetContainer style={{ marginTop: "30px" }}>
+    <SetContainer style={{ marginTop: "30px", border: "none" }}>
       <legend>시간 • 장소 설정</legend>
       <InputContainer>
         <div>

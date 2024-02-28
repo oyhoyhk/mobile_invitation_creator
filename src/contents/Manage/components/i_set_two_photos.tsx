@@ -31,7 +31,7 @@ export default function SetTwoPhotos() {
   };
 
   return (
-    <SetContainer>
+    <SetContainer style={{ border: "none" }}>
       <legend>서브 사진 설정</legend>
       <ContentsContainer>
         {images.map((image, index) => (
@@ -65,64 +65,6 @@ export default function SetTwoPhotos() {
             />
           </Contents>
         ))}
-        {/* <Contents>
-          {image.image ? (
-            <Image alt="preview" src={image.image.toString()} />
-          ) : (
-            <NoImage />
-          )}
-          <Button
-            variant="contained"
-            sx={{
-              height: "50px",
-              width: "50px",
-              minWidth: "50px",
-              borderRadius: "50px",
-              position: "absolute",
-              bottom: "20px",
-              right: "40px",
-            }}
-            onClick={() => refs.current[0]?.click()}
-          >
-            +
-          </Button>
-          <input
-            onChange={handleImageChange}
-            ref={refs[0]}
-            type="file"
-            accept="image/*"
-            style={{ display: "none" }}
-          />
-        </Contents>
-        <Contents>
-          {image.image ? (
-            <Image alt="preview" src={image.image.toString()} />
-          ) : (
-            <NoImage />
-          )}
-          <Button
-            variant="contained"
-            sx={{
-              height: "50px",
-              width: "50px",
-              minWidth: "50px",
-              borderRadius: "50px",
-              position: "absolute",
-              bottom: "20px",
-              right: "40px",
-            }}
-            onClick={() => secondRef.current?.click()}
-          >
-            +
-          </Button>
-          <input
-            onChange={handleImageChange}
-            ref={secondRef}
-            type="file"
-            accept="image/*"
-            style={{ display: "none" }}
-          />
-        </Contents> */}
       </ContentsContainer>
     </SetContainer>
   );
@@ -136,7 +78,7 @@ const ContentsContainer = styled.div`
 
 const Image = styled.img`
   max-height: 300px;
-  max-width: 100%;
+  max-: 100%;
   margin: 0 auto;
 `;
 

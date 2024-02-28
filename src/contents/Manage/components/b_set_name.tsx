@@ -11,7 +11,7 @@ export default function SetName() {
     setName({ ...name, [e.target.name]: e.target.value });
   };
   return (
-    <SetContainer style={{ paddingBottom: "30px" }}>
+    <SetContainer style={{ paddingBottom: "30px", border: "none" }}>
       <legend>신랑 / 신부 이름 설정</legend>
       <InputContainer>
         <div>

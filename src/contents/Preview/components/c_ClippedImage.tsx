@@ -4,7 +4,6 @@ import { clippedImageState } from "../../../lib/atom";
 
 export default function ClippedImage() {
   const clippedImage = useRecoilValue(clippedImageState);
-  console.log(clippedImage);
   return (
     <Container>
       {clippedImage.image ? (

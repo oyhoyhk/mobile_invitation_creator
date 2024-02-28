@@ -1,3 +1,4 @@
+import { Dayjs } from "dayjs";
 import { atom } from "recoil";
 
 export const nameState = atom({
@@ -93,4 +94,51 @@ export const twoPhotoState = atom<
       position: "50% 50%",
     },
   ],
+});
+
+export const dateState = atom<Dayjs | null>({
+  key: "dateState",
+  default: null,
+});
+
+export const locationState = atom({
+  key: "locationState",
+  default: {
+    address: "",
+    detail: "",
+    phone: "",
+  },
+});
+
+export const transportationState = atom<{
+  [key: string]: {
+    name: string;
+    icon: string;
+    routes?: string[];
+    route?: string;
+  };
+}>({
+  key: "transportationState",
+  default: {
+    bus: {
+      name: "버스",
+      icon: "bus.png",
+      routes: [],
+    },
+    subway: {
+      name: "지하철",
+      icon: "subway.png",
+      routes: [],
+    },
+    car: {
+      name: "자가용",
+      icon: "car.png",
+      route: ``,
+    },
+    tourBus: {
+      name: "전세버스",
+      icon: "bus.png",
+      route: "",
+    },
+  },
 });

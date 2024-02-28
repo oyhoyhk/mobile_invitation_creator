@@ -24,7 +24,7 @@ export default function SetMainPhoto() {
   };
 
   return (
-    <SetContainer style={{ marginTop: "25px" }}>
+    <SetContainer style={{ marginTop: "25px", border: "none" }}>
       <legend>메인 사진 설정</legend>
       <Contents>
         {image.image ? (

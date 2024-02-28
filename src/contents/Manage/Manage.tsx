@@ -8,6 +8,10 @@ import SetMainPhoto from "./components/f_set_main_photo";
 import SetSecondDescription from "./components/g_set_second_description";
 import SetFamily from "./components/h_set_family";
 import SetTwoPhotos from "./components/i_set_two_photos";
+import SetDate from "./components/j_set_date";
+import SetGallery from "./components/k_set_gallery";
+import SetLocation from "./components/l_set_location";
+import SetTransportation from "./components/m_set_transportation";
 
 export default function Manage() {
   return (
@@ -22,6 +26,10 @@ export default function Manage() {
       <SetSecondDescription />
       <SetFamily />
       <SetTwoPhotos />
+      <SetDate />
+      <SetGallery />
+      <SetLocation />
+      <SetTransportation />
     </Container>
   );
 }

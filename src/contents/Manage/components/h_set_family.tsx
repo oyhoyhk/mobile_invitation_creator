@@ -54,7 +54,9 @@ export default function SetFamily() {
   };
 
   return (
-    <SetContainer style={{ marginTop: "30px", paddingBottom: "25px" }}>
+    <SetContainer
+      style={{ marginTop: "30px", paddingBottom: "25px", border: "none" }}
+    >
       <legend>가족 정보 설정</legend>
       <InputContainer>
         <label style={{ fontWeight: "bold" }}>신랑</label>

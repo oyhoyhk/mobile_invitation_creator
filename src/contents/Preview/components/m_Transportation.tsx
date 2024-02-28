@@ -1,60 +1,37 @@
 import styled from "@emotion/styled";
+import { useRecoilValue } from "recoil";
+import { transportationState } from "../../../lib/atom";
 
 const numberMapper = "①②③④⑤⑥⑦⑧⑨⑩";
 
-interface ITransportation {
-  [key: string]: {
-    name: string;
-    icon: string;
-    routes?: string[];
-    route?: string;
-  };
-}
-
-const data: ITransportation = {
-  bus: {
-    name: `버   스`,
-    icon: "bus.png",
-    routes: ["마을버스 용산03", "간선버스 110A, 110B, 421, 740, N72, N75"],
-  },
-  subway: {
-    name: "지하철",
-    icon: "subway.png",
-    routes: [
-      "6호선 : 삼각지역 12번 출구 (도보 3분)",
-      "4호선 : 삼각지역 1번 출국 (도보 5분)",
-      "1호선 : 남영역 1번 출구 (도보 7분)",
-    ],
-  },
-  car: {
-    name: "자가용",
-    icon: "car.png",
-    route: `전쟁기념관내 지상, 지하 주차 가능
-            지상, 지하 주차 1000대 가능`,
-  },
-  tourBus: {
-    name: "전세버스",
-    icon: "bus.png",
-    route: "6:00 대전역 출발",
-  },
-};
-
 export default function Transportation() {
+  const transportationInfo = useRecoilValue(transportationState);
   return (
     <Container>
-      {Object.values(data).map((info) => (
+      {Object.values(transportationInfo).map((info) => (
         <TransportationInfo key={info.name}>
           <Title>
             <Icon img={info.icon} />
             {info.name}
           </Title>
-          {info.routes &&
+          {typeof info.routes === "object" && info.routes.length > 0 ? (
             info.routes.map((route, index) => (
               <Route key={route}>
                 {numberMapper[index]} {route}
               </Route>
-            ))}
-          {info.route && <Route>{info.route}</Route>}
+            ))
+          ) : typeof info.routes === "object" && info.routes.length === 0 ? (
+            <Route className="empty">{`${info.name} 교통 편`}</Route>
+          ) : (
+            ""
+          )}
+          {typeof info.route === "string" && info.route ? (
+            <Route className="textarea">{info.route}</Route>
+          ) : typeof info.route === "string" && !info.route ? (
+            <Route className="empty">{`${info.name} 찾아오는 길`}</Route>
+          ) : (
+            ""
+          )}
         </TransportationInfo>
       ))}
     </Container>
@@ -71,8 +48,8 @@ const Title = styled.div`
   white-space: pre-line;
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
-  margin-top: 20px;
+  margin-bottom: 15px;
+  margin-top: 45px;
 `;
 
 const Icon = styled.div<{ img: string }>`
@@ -84,8 +61,20 @@ const Icon = styled.div<{ img: string }>`
 
 const Route = styled.div`
   padding-left: 35px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   white-space: pre-line;
+  line-height: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &.textarea {
+    white-space: pre-line;
+  }
+
+  &.empty {
+    color: var(--gray-color);
+  }
 `;
 
 const Container = styled.div`

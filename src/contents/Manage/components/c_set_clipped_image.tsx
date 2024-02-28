@@ -23,7 +23,7 @@ export default function SetClippedImage() {
     }
   };
   return (
-    <SetContainer style={{ marginTop: "15px" }}>
+    <SetContainer style={{ marginTop: "15px", border: "none" }}>
       <legend>오프닝 이미지 선택하기</legend>
       <Contents>
         {image.image ? (

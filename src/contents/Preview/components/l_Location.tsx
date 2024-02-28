@@ -1,7 +1,12 @@
 import styled from "@emotion/styled";
 import { CustomDivider } from "../Preview";
-import useNaverMap from "../../../lib/hooks/useNaverMap";
+import useNaverMap, {
+  searchAddressToCoordinate,
+} from "../../../lib/hooks/useNaverMap";
 import { useEffect, useRef } from "react";
+import { useRecoilValue } from "recoil";
+import { locationState } from "../../../lib/atom";
+import axios from "axios";
 
 const buttons = [
   {
@@ -21,24 +26,70 @@ const buttons = [
 export default function Location() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const naver: any = useNaverMap();
+  const locationInfo = useRecoilValue(locationState);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!naver || !ref.current) return;
 
-    new naver.maps.Map(ref.current, {
+    const map = new naver.maps.Map(ref.current, {
       center: new naver.maps.LatLng(37.5665, 126.978),
       zoom: 10,
     });
-  }, [naver]);
+
+    // console.log(naver);
+
+    // naver.maps?.Service?.geocode(
+    //   {
+    //     query: locationInfo.address,
+    //   },
+    //   function (status, response) {
+    //     if (status === naver.maps.Service.Status.ERROR) {
+    //       return alert("Something Wrong!");
+    //     }
+    //     if (response.v2.meta.totalCount === 0) {
+    //       return alert("totalCount" + response.v2.meta.totalCount);
+    //     }
+    //     console.log(status, response);
+    //   }
+    // );
+  }, [naver, locationInfo]);
+
+  useEffect(() => {
+    if (!naver || !ref.current || !locationInfo.address) return;
+    axios
+      .get(
+        `/map-geocode/v2/geocode?query=${encodeURIComponent(
+          locationInfo.address
+        )}`,
+        {
+          headers: {
+            "X-NCP-APIGW-API-KEY-ID": import.meta.env.VITE_CLIENT_ID,
+            "X-NCP-APIGW-API-KEY": import.meta.env.VITE_CLIENT_SECRET,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      });
+  }, [naver, locationInfo]);
 
   return (
     <Container>
       <CustomDivider />
-      <Text>로즈레터 호텔 10층 그랜드홀</Text>
+      <Text className={locationInfo.detail ? "" : "empty"}>
+        {locationInfo.detail || "ex) 로즈레터 호텔 10층 그랜드홀"}
+      </Text>
       <CustomDivider style={{ marginTop: "25px" }} />
-      <Text>서울시 서초구 로즈로</Text>
-      <Text style={{ marginTop: "10px" }}>Tel. 02-000-000</Text>
+      <Text className={locationInfo.address ? "" : "empty"}>
+        {locationInfo.address || "ex) 서울시 서초구 로즈로"}
+      </Text>
+      <Text
+        className={locationInfo.phone ? "" : "empty"}
+        style={{ marginTop: "10px" }}
+      >
+        {"Tel. " + locationInfo.phone || "ex) Tel. 02-000-000"}
+      </Text>
       <MapContainer ref={ref} />
       <ButtonContainer>
         {buttons.map((info) => (
@@ -110,6 +161,10 @@ const MapContainer = styled.div`
 const Text = styled.div`
   text-align: center;
   margin-top: 25px;
+
+  &.empty {
+    color: var(--gray-color);
+  }
 `;
 
 const Container = styled.div`

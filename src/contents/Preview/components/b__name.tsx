@@ -1,16 +1,20 @@
 import styled from "@emotion/styled";
+import { useRecoilValue } from "recoil";
+import { nameState } from "../../../lib/atom";
 
 export default function Name() {
+  const { groom, bride } = useRecoilValue(nameState);
+
   return (
     <Container>
       <div>
         <div className="cursive">groom</div>
-        <div>이재욱</div>
+        <div style={{ width: "70px", height: "30px" }}>{groom}</div>
       </div>
       <Line />
       <div>
         <div className="cursive">bride</div>
-        <div>김희연</div>
+        <div style={{ width: "70px", height: "30px" }}>{bride}</div>
       </div>
     </Container>
   );

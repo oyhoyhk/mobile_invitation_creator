@@ -1,23 +1,23 @@
 import styled from "@emotion/styled";
 import Header from "./components/a_header";
 import Name from "./components/b__name";
-import ClippedImage from "./components/ClippedImage";
-import Info from "./components/c_Info";
-import MainPhoto from "./components/e_MainPhoto";
-import FirstDescription from "./components/d_FirstDescription";
-import SecondDescription from "./components/f_SecondDescription";
-import Family from "./components/g_Family";
-import TwoPhotos from "./components/h_TwoPhotos";
-import DateCalendar from "./components/i_Calendar";
-import Gallery from "./components/j_Gallery";
-import Location from "./components/k_Location";
-import Transportation from "./components/l_Transportation";
-import AccountInfo from "./components/m_AccountInfo";
-import Attendance from "./components/n_Attendance";
-import GuestBook from "./components/o_GuestBook";
-import FinalPhoto from "./components/p_FinalPhoto";
+import ClippedImage from "./components/c_ClippedImage";
+import Info from "./components/d_Info";
+import FirstDescription from "./components/e_FirstDescription";
+import MainPhoto from "./components/f_MainPhoto";
+import SecondDescription from "./components/g_SecondDescription";
+import Family from "./components/h_Family";
+import TwoPhotos from "./components/i_TwoPhotos";
+import DateCalendar from "./components/j_Calendar";
+import Gallery from "./components/k_Gallery";
+import Location from "./components/l_Location";
+import Transportation from "./components/m_Transportation";
+import AccountInfo from "./components/n_AccountInfo";
+import Attendance from "./components/o_Attendance";
+import GuestBook from "./components/p_GuestBook";
+import FinalPhoto from "./components/q_FinalPhoto";
 import { StyledButton } from "../../components/common";
-import Footer from "./components/q_Footer";
+import Footer from "./components/r_Footer";
 
 export default function Preview() {
   return (
@@ -90,8 +90,6 @@ export const CustomDivider = styled.div`
 
 const Container = styled.div`
   width: 375px;
-  height: 100%;
-  overflow: auto;
   background: #fbf6ef;
 
   text-align: center;

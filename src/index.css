@@ -11,6 +11,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   --margin-top: 50px;
+  --gray-color: #a7a7a7;
 }
 
 * {
@@ -19,6 +20,8 @@
   box-sizing: border-box;
 
   scrollbar-width: 0;
+  color: black;
+  background: transparent;
 }
 
 *::-webkit-scrollbar {

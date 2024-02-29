@@ -1,14 +1,22 @@
 import styled from "@emotion/styled";
+import { useRecoilValue } from "recoil";
+import { accountInfoState } from "../../../lib/atom";
 
 export default function AccountInfo() {
+  const placeholder = `ex) 참석이 어려우신 분들을 위해
+  계좌번호를 기재하였습니다.
+  너그러운 마음으로 양해 부탁드립니다.`;
+
+  const { message } = useRecoilValue(accountInfoState);
+
   return (
     <Container>
       <SubTitle>마음 전하실 곳</SubTitle>
-      <Annoucement>
-        {`참석이 어려우신 분들을 위해
-    계좌번호를 기재하였습니다.
-    너그러운 마음으로 양해 부탁드립니다.`}
-      </Annoucement>
+      {message ? (
+        <Annoucement>{message}</Annoucement>
+      ) : (
+        <Annoucement className="empty">{placeholder}</Annoucement>
+      )}
       <Button>신랑측 계좌번호</Button>
       <Button>신부측 계좌번호</Button>
     </Container>
@@ -25,6 +33,10 @@ const Annoucement = styled.div`
   white-space: pre-line;
   line-height: 2.2rem;
   margin-bottom: var(--margin-top);
+
+  &.empty {
+    color: var(--gray-color);
+  }
 `;
 const Button = styled.div`
   cursor: pointer;

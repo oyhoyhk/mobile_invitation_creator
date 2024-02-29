@@ -1,12 +1,21 @@
 import styled from "@emotion/styled";
+import { useRecoilValue } from "recoil";
+import { finalPhotoState } from "../../../lib/atom";
+
+const placeholder = `저희의 새로운 시작을
+함께 해주시는 모든 분들께
+감사드립니다.`;
 
 export default function FinalPhoto() {
+  const { color, text, image, position } = useRecoilValue(finalPhotoState);
   return (
-    <Container img="finalPhoto.png">
+    <Container image={image} position={position}>
       <Cover />
-      <Text>{`저희의 새로운 시작을
-        함께 해주시는 모든 분들께
-        감사드립니다.`}</Text>
+      {text ? (
+        <Text style={{ color }}>{text}</Text>
+      ) : (
+        <Text style={{ color: "var(--gray-color)" }}>{placeholder}</Text>
+      )}
     </Container>
   );
 }
@@ -21,12 +30,22 @@ const Cover = styled.div`
   z-index: 1;
 `;
 
-const Container = styled.div<{ img: string }>`
-  margin-top: 50px;
+const Container = styled.div<{
+  image: string | ArrayBuffer | null;
+  position: string;
+}>`
   width: 100%;
-  height: 470px;
-  background-image: url(${(props) => props.img});
-  background-size: 100% 100%;
+  height: 469px;
+  background-image: ${(props) =>
+    props.image ? `url(${props.image.toString()})` : `url(picture.png)`};
+  ${(props) =>
+    props.image ? "background-size:100% auto" : "background-size: 50px 50px"};
+  background-repeat: no-repeat;
+  background-position: ${(props) =>
+    props.image ? props.position : `center center`};
+  ${(props) => !props.image && "border-top: 1px solid var(--gray-color);"}
+  ${(props) => !props.image && "border-bottom: 1px solid var(--gray-color);"}
+  margin-top: var(--margin-top);
   position: relative;
 `;
 

@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 import { CustomDivider } from "../Preview";
-import useNaverMap, {
-  searchAddressToCoordinate,
-} from "../../../lib/hooks/useNaverMap";
+import useNaverMap from "../../../lib/hooks/useNaverMap";
 import { useEffect, useRef } from "react";
 import { useRecoilValue } from "recoil";
 import { locationState } from "../../../lib/atom";
@@ -32,10 +30,10 @@ export default function Location() {
   useEffect(() => {
     if (!naver || !ref.current) return;
 
-    const map = new naver.maps.Map(ref.current, {
-      center: new naver.maps.LatLng(37.5665, 126.978),
-      zoom: 10,
-    });
+    // const map = new naver.maps.Map(ref.current, {
+    //   center: new naver.maps.LatLng(37.5665, 126.978),
+    //   zoom: 10,
+    // });
 
     // console.log(naver);
 

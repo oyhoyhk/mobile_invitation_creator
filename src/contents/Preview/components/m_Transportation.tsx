@@ -8,32 +8,34 @@ export default function Transportation() {
   const transportationInfo = useRecoilValue(transportationState);
   return (
     <Container>
-      {Object.values(transportationInfo).map((info) => (
-        <TransportationInfo key={info.name}>
-          <Title>
-            <Icon img={info.icon} />
-            {info.name}
-          </Title>
-          {typeof info.routes === "object" && info.routes.length > 0 ? (
-            info.routes.map((route, index) => (
-              <Route key={route}>
-                {numberMapper[index]} {route}
-              </Route>
-            ))
-          ) : typeof info.routes === "object" && info.routes.length === 0 ? (
-            <Route className="empty">{`${info.name} 교통 편`}</Route>
-          ) : (
-            ""
-          )}
-          {typeof info.route === "string" && info.route ? (
-            <Route className="textarea">{info.route}</Route>
-          ) : typeof info.route === "string" && !info.route ? (
-            <Route className="empty">{`${info.name} 찾아오는 길`}</Route>
-          ) : (
-            ""
-          )}
-        </TransportationInfo>
-      ))}
+      {Object.values(transportationInfo)
+        .filter((info) => info.active)
+        .map((info) => (
+          <TransportationInfo key={info.name}>
+            <Title>
+              <Icon img={info.icon} />
+              {info.name}
+            </Title>
+            {typeof info.routes === "object" && info.routes.length > 0 ? (
+              info.routes.map((route, index) => (
+                <Route key={route}>
+                  {numberMapper[index]} {route}
+                </Route>
+              ))
+            ) : typeof info.routes === "object" && info.routes.length === 0 ? (
+              <Route className="empty">{`${info.name} 교통 편`}</Route>
+            ) : (
+              ""
+            )}
+            {typeof info.route === "string" && info.route ? (
+              <Route className="textarea">{info.route}</Route>
+            ) : typeof info.route === "string" && !info.route ? (
+              <Route className="empty">{`${info.name} 찾아오는 길`}</Route>
+            ) : (
+              ""
+            )}
+          </TransportationInfo>
+        ))}
     </Container>
   );
 }

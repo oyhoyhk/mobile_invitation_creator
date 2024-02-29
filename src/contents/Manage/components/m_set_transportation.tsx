@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil";
 import { SetContainer } from "../../../components/common";
 import { transportationState } from "../../../lib/atom";
-import { Button } from "@mui/material";
+import { Button, Switch } from "@mui/material";
 import styled from "@emotion/styled";
 import { useCallback } from "react";
 
@@ -61,13 +61,34 @@ export default function SetTransportation() {
     [setTransportation]
   );
 
+  const handleClickSwitch = useCallback(
+    (key: string) => {
+      setTransportation((prev) => ({
+        ...prev,
+        [key]: {
+          ...prev[key],
+          active: !prev[key].active,
+        },
+      }));
+    },
+    [setTransportation]
+  );
+
   return (
     <SetContainer style={{ marginTop: "50px", border: "none" }}>
       <legend>교통수단 설정</legend>
       {Object.keys(transportation).map((key) => (
         <Contents key={key}>
-          <h3>{transportation[key].name}</h3>
-          {transportation[key].routes &&
+          <h3>
+            {transportation[key].name}{" "}
+            <Switch
+              checked={transportation[key].active}
+              onClick={() => handleClickSwitch(key)}
+              color="default"
+            />
+          </h3>
+          {transportation[key].active &&
+            transportation[key].routes &&
             transportation[key].routes?.map((route, index) => (
               <Route key={index}>
                 <span>{route}</span>
@@ -80,40 +101,42 @@ export default function SetTransportation() {
                 </Button>
               </Route>
             ))}
-          {typeof transportation[key].routes === "object" && (
-            <InputContainer>
-              <input
-                id={key}
-                placeholder={`${transportation[key].name} 추가`}
-                onKeyPress={(e) => handlePressEnter(e, key)}
+          {transportation[key].active &&
+            typeof transportation[key].routes === "object" && (
+              <InputContainer>
+                <input
+                  id={key}
+                  placeholder={`${transportation[key].name} 추가`}
+                  onKeyPress={(e) => handlePressEnter(e, key)}
+                />
+                <Button
+                  variant="contained"
+                  sx={{ minWidth: "25px" }}
+                  onClick={(e) =>
+                    handleAddTransportation(e.target as HTMLElement, key)
+                  }
+                >
+                  +
+                </Button>
+              </InputContainer>
+            )}
+          {transportation[key].active &&
+            typeof transportation[key].route === "string" && (
+              <TextArea
+                placeholder={`${transportation[key].name} 찾아오는 길`}
+                style={{
+                  height:
+                    ((transportation[key].route as string).split("\n").length ||
+                      1) *
+                      24 +
+                    20 +
+                    "px",
+                }}
+                name={key}
+                value={transportation[key].route as string}
+                onChange={handleTransportationChange}
               />
-              <Button
-                variant="contained"
-                sx={{ minWidth: "25px" }}
-                onClick={(e) =>
-                  handleAddTransportation(e.target as HTMLElement, key)
-                }
-              >
-                +
-              </Button>
-            </InputContainer>
-          )}
-          {typeof transportation[key].route === "string" && (
-            <TextArea
-              placeholder={`${transportation[key].name} 찾아오는 길`}
-              style={{
-                height:
-                  ((transportation[key].route as string).split("\n").length ||
-                    1) *
-                    24 +
-                  20 +
-                  "px",
-              }}
-              name={key}
-              value={transportation[key].route as string}
-              onChange={handleTransportationChange}
-            />
-          )}
+            )}
         </Contents>
       ))}
     </SetContainer>

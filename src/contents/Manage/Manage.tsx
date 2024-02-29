@@ -12,6 +12,9 @@ import SetDate from "./components/j_set_date";
 import SetGallery from "./components/k_set_gallery";
 import SetLocation from "./components/l_set_location";
 import SetTransportation from "./components/m_set_transportation";
+import SetAccountInfo from "./components/n_set_account_info";
+import SetAttandanceMessage from "./components/o_set_attendance";
+import SetFinalPhoto from "./components/q_set_final_photo";
 
 export default function Manage() {
   return (
@@ -30,6 +33,9 @@ export default function Manage() {
       <SetGallery />
       <SetLocation />
       <SetTransportation />
+      <SetAccountInfo />
+      <SetAttandanceMessage />
+      <SetFinalPhoto />
     </Container>
   );
 }

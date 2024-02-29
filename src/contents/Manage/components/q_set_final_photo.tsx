@@ -61,7 +61,7 @@ export default function SetFinalPhoto() {
         />
       </ColorContainer>
       <TextArea
-        style={{ height: `${height * 36 + 15}px` }}
+        style={{ height: `${height * 40 + 15}px` }}
         value={finalPhoto.text}
         onChange={handleTextChange}
         placeholder={placeholder}

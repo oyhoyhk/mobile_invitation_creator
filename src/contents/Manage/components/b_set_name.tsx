@@ -3,6 +3,7 @@ import { TextField } from "@mui/material";
 import { useRecoilState } from "recoil";
 import { nameState } from "../../../lib/atom";
 import { SetContainer } from "../../../components/common";
+import React from "react";
 
 export default function SetName() {
   const [name, setName] = useRecoilState(nameState);

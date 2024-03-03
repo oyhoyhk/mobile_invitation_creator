@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import { useRef } from "react";
 import { useRecoilState } from "recoil";
 import { clippedImageState } from "../../../lib/atom";
+import React from "react";
 
 export default function SetClippedImage() {
   const fileRef = useRef<HTMLInputElement>(null);

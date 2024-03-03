@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
 import { nameState } from "../../../lib/atom";
+import React from "react";
 
 export default function Name() {
   const { groom, bride } = useRecoilValue(nameState);
@@ -8,17 +9,45 @@ export default function Name() {
   return (
     <Container>
       <div>
-        <div className="cursive">groom</div>
-        <div style={{ width: "70px", height: "30px" }}>{groom}</div>
+        <Block className="cursive" style={{ fontSize: "14px" }}>
+          groom
+        </Block>
+        <Block
+          style={{
+            width: "100px",
+            height: "30px",
+            letterSpacing: "5px",
+            fontSize: "16px",
+          }}
+        >
+          {groom}
+        </Block>
       </div>
       <Line />
       <div>
-        <div className="cursive">bride</div>
-        <div style={{ width: "70px", height: "30px" }}>{bride}</div>
+        <Block className="cursive" style={{ fontSize: "14px" }}>
+          bride
+        </Block>
+        <Block
+          style={{
+            width: "100px",
+            height: "30px",
+            letterSpacing: "5px",
+            fontSize: "16px",
+          }}
+        >
+          {bride}
+        </Block>
       </div>
     </Container>
   );
 }
+
+const Block = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const Line = styled.div`
   height: 35px;

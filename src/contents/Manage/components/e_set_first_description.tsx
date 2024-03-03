@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import { firstDescriptionState } from "../../../lib/atom";
 import { SetContainer } from "../../../components/common";
 import { useState } from "react";
+import React from "react";
 
 export default function SetFirstDescription() {
   const [height, setHeight] = useState(4);

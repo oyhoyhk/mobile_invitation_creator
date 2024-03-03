@@ -1,4 +1,5 @@
 import { SetContainer } from "../../../components/common";
+import React from "react";
 
 export default function SetGallery() {
   return (

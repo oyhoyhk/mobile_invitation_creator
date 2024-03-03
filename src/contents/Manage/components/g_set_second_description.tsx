@@ -3,6 +3,7 @@ import { SetContainer } from "../../../components/common";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { secondDescriptionState } from "../../../lib/atom";
+import React from "react";
 
 export default function SetSecondDescription() {
   const [height, setHeight] = useState(8);
@@ -26,10 +27,10 @@ export default function SetSecondDescription() {
   함께 축복해주시면 감사하겠습니다.
   `;
   return (
-    <SetContainer style={{ marginTop: "100px", paddingBottom: "40px" }}>
+    <SetContainer style={{ marginTop: "90px", paddingBottom: "40px" }}>
       <legend>초대 문구 설정</legend>
       <TextArea
-        style={{ height: `${40 + height * 40}px` }}
+        style={{ height: `${50 + height * 25}px` }}
         placeholder={placeholder}
         value={secondDescription}
         onChange={onChange}
@@ -43,7 +44,7 @@ const TextArea = styled.textarea`
   width: 100%;
   text-align: center;
   font-size: 0.9rem;
-  line-height: 2.5rem;
+  line-height: 26px;
   outline: none;
   border: none;
   display: flex;
@@ -56,6 +57,6 @@ const TextArea = styled.textarea`
   &::placeholder {
     text-align: center;
     font-size: 1rem;
-    line-height: 2.5rem;
+    line-height: 26px;
   }
 `;

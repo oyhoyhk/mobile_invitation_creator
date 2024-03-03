@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import { mainPhotoState } from "../../../lib/atom";
 import { Button } from "@mui/material";
 import { useRef } from "react";
+import React from "react";
 
 export default function SetMainPhoto() {
   const [image, setImage] = useRecoilState(mainPhotoState);

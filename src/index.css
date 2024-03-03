@@ -20,6 +20,8 @@
   padding: 0;
   box-sizing: border-box;
 
+  user-select: none;
+
   scrollbar-width: 0;
   color: black;
   background: transparent;

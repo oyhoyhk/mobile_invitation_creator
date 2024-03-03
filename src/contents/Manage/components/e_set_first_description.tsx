@@ -29,7 +29,7 @@ export default function SetFirstDescription() {
         onChange={onChange}
         value={firstDescription}
         placeholder={placeholder}
-        style={{ height: `${height * 48}px` }}
+        style={{ height: `${height * 35}px` }}
       />
     </SetContainer>
   );

@@ -189,3 +189,16 @@ export const backgroundColorState = atom({
   key: "backgroundColorState",
   default: "#ffffff",
 });
+
+export const galleryListState = atom({
+  key: "galleryListState",
+  default: [] as string[],
+});
+
+export const dateHeartState = atom({
+  key: "dateHeartState",
+  default: {
+    color: "#ffb6b6",
+    opacity: "1",
+  },
+});

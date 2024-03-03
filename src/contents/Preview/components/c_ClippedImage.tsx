@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
 import { clippedImageState } from "../../../lib/atom";
 import React from "react";
-import Heart from "../../../assets/heart.svg?react";
+import Heart from "../../../assets/heartClip.svg?react";
 
 export default function ClippedImage() {
   const clippedImage = useRecoilValue(clippedImageState);

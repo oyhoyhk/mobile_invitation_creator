@@ -1,10 +1,13 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
-import { dateState } from "../../../lib/atom";
+import { dateHeartState, dateState } from "../../../lib/atom";
+import React from "react";
+import Heart from "../../../assets/heart.svg?react";
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export default function DateCalendar() {
+  const { color, opacity } = useRecoilValue(dateHeartState);
   const originDate = useRecoilValue(dateState);
   const date = originDate?.toDate() ?? new Date();
 
@@ -38,17 +41,31 @@ export default function DateCalendar() {
       ))}
       {Array.from({ length: numberOfDaysInMonth }, (_, index) => index + 1).map(
         (date) => (
-          <div
-            key={`date-${date}`}
-            className={originDate && date === day ? "wedding date" : "date"}
-          >
-            {date}
+          <div key={`date-${date}`} className={"date"}>
+            {originDate && date === day && (
+              <HeartSVG color={color} opacity={opacity} />
+            )}
+            {<div className="dateValue">{date}</div>}
           </div>
         )
       )}
     </Container>
   );
 }
+
+const HeartSVG = styled(Heart)<{ color: string; opacity: number }>`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 25px;
+  height: 25px;
+  z-index: 1;
+  opacity: ${(props) => props.opacity};
+  & path {
+    fill: ${(props) => props.color};
+  }
+`;
 
 const Container = styled.div`
   font-size: 0.8rem;
@@ -65,6 +82,14 @@ const Container = styled.div`
     align-items: center;
   }
 
+  & .dateValue {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
   & > .dayName {
     color: #a4a4a4;
   }
@@ -77,6 +102,8 @@ const Container = styled.div`
   & > .date {
     /* 날짜를 표현하기 위한 스타일 */
     padding: 5px;
+    position: relative;
+    height: 30px;
   }
 
   & > .wedding {

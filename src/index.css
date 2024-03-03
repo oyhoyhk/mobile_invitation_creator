@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "snellBT";
+  src: url("/fonts/snellBT-Regular.woff") format("woff");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "snellBT";
+  src: url("/fonts/snellBT-Bold.woff") format("woff");
+  font-weight: bold;
+}
+
 :root {
   font-family: "Noto Serif KR", serif;
   line-height: 1.5;
@@ -29,5 +41,5 @@
 }
 
 .cursive {
-  font-family: "Pinyon Script", cursive;
+  font-family: "snellBT", cursive;
 }

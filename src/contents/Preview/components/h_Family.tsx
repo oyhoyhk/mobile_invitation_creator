@@ -35,7 +35,7 @@ export default function Family() {
           {" "}
           {familyInfo.groom.mother.name || "신랑 母"}
         </b>
-        의
+        <span style={{ fontSize: "12px" }}>의</span>
         <b
           className={familyInfo.groom.position ? "" : "empty"}
           style={{ width: "46px", textAlign: "left" }}
@@ -71,7 +71,7 @@ export default function Family() {
         >
           {familyInfo.bride.mother.name || "신부 母"}
         </b>
-        의{" "}
+        <span style={{ fontSize: "12px" }}>의</span>
         <b
           className={familyInfo.bride.position ? "" : "empty"}
           style={{ width: "46px", textAlign: "left" }}
@@ -88,7 +88,7 @@ export default function Family() {
 }
 
 const Text = styled.div`
-  font-size: 0.9rem;
+  font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: center;

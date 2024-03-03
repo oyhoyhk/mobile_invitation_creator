@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
 import { accountInfoState } from "../../../lib/atom";
+import React from "react";
 
 export default function AccountInfo() {
   const placeholder = `ex) 참석이 어려우신 분들을 위해
@@ -11,7 +12,7 @@ export default function AccountInfo() {
 
   return (
     <Container>
-      <SubTitle>마음 전하실 곳</SubTitle>
+      <SubTitle>•마음 전하실 곳•</SubTitle>
       {message ? (
         <Annoucement>{message}</Annoucement>
       ) : (
@@ -24,15 +25,16 @@ export default function AccountInfo() {
 }
 
 const SubTitle = styled.div`
-  font-size: 0.5rem;
+  font-size: 12px;
   margin-top: var(--margin-top);
 `;
 const Annoucement = styled.div`
   margin-top: 25px;
   text-align: center;
   white-space: pre-line;
-  line-height: 2.2rem;
+  line-height: 26px;
   margin-bottom: var(--margin-top);
+  font-size: 14px;
 
   &.empty {
     color: var(--gray-color);

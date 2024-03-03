@@ -18,15 +18,25 @@ import GuestBook from "./components/p_GuestBook";
 import FinalPhoto from "./components/q_FinalPhoto";
 import { StyledButton } from "../../components/common";
 import Footer from "./components/r_Footer";
+import React from "react";
+import Candle from "../../assets/candle.svg?react";
+import Pigeon from "../../assets/pigeon.svg?react";
+import { useRecoilValue } from "recoil";
+import { backgroundColorState } from "../../lib/atom";
 
 export default function Preview() {
+  const backgroundColor = useRecoilValue(backgroundColorState);
   return (
-    <Container>
+    <Container backgroundColor={backgroundColor}>
       <Header />
       <Name />
       <ClippedImage />
       <Info />
-      <Image alt="candle" src="candle.png" />
+      <Candle
+        width="81px"
+        height="73px"
+        style={{ marginTop: "var(--margin-top)" }}
+      />
       <FirstDescription />
       <MainPhoto />
       <div
@@ -63,7 +73,11 @@ export default function Preview() {
       </div>
       <Location />
       <Transportation />
-      <Image alt="pigeon" src="pigeon.png" />
+      <Pigeon
+        width="78px"
+        height="48px"
+        style={{ marginTop: "var(--margin-top)" }}
+      />
       <AccountInfo />
       <Attendance />
       <GuestBook />
@@ -74,12 +88,6 @@ export default function Preview() {
   );
 }
 
-const Image = styled.img`
-  display: block;
-  margin: 0 auto;
-  margin-top: var(--margin-top);
-`;
-
 export const CustomDivider = styled.div`
   width: 80%;
   height: 1px;
@@ -88,9 +96,9 @@ export const CustomDivider = styled.div`
   margin-top: var(--margin-top);
 `;
 
-const Container = styled.div`
+const Container = styled.div<{ backgroundColor: string }>`
   width: 375px;
-  background: #fbf6ef;
+  background: ${(props) => props.backgroundColor};
 
   text-align: center;
 `;

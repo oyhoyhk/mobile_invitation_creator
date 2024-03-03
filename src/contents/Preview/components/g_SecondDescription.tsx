@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
 import { secondDescriptionState } from "../../../lib/atom";
+import React from "react";
 
 export default function SecondDescription() {
   const placeholder = `ex) 2020년 9월 25일
@@ -30,6 +31,6 @@ const Container = styled.div`
   white-space: pre-line;
   text-align: center;
   margin-top: var(--margin-top);
-  line-height: 2.5rem;
-  font-size: 0.9rem;
+  line-height: 26px;
+  font-size: 14px;
 `;

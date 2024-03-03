@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
 import { mainPhotoState } from "../../../lib/atom";
+import React from "react";
 
 export default function MainPhoto() {
   const { image, position } = useRecoilValue(mainPhotoState);
@@ -13,6 +14,7 @@ const Container = styled.div<{
 }>`
   width: 100%;
   height: 469px;
+  background-color: white;
   background-image: ${(props) =>
     props.image ? `url(${props.image.toString()})` : `url(picture.png)`};
   ${(props) =>

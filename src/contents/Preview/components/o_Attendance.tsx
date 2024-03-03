@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
 import { attendanceMessageState } from "../../../lib/atom";
+import React from "react";
 
 const placeholder = `ex) 모든 분들께
 부족함 없는 예식을 준비하기 위해
@@ -54,7 +55,8 @@ const Container = styled.fieldset`
 
   & > p {
     white-space: pre-line;
-    line-height: 2.2rem;
+    line-height: 26px;
+    font-size: 14px;
 
     &.empty {
       color: var(--gray-color);

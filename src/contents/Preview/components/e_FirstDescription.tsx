@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
 import { firstDescriptionState } from "../../../lib/atom";
+import React from "react";
 
 export default function FirstDescription() {
   const firstDescription = useRecoilValue(firstDescriptionState);
@@ -23,6 +24,7 @@ export default function FirstDescription() {
 const Container = styled.div`
   margin-top: 25px;
   text-align: center;
-  line-height: 3rem;
+  line-height: 26px;
   white-space: pre-line;
+  font-size: 14px;
 `;

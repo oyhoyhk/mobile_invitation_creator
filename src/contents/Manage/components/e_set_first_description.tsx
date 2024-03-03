@@ -39,7 +39,7 @@ const TextArea = styled.textarea`
   text-align: center;
   padding: 20px;
   width: 100%;
-  line-height: 2.5rem;
+  line-height: 26px;
   font-size: 1rem;
   resize: none;
   border: none;

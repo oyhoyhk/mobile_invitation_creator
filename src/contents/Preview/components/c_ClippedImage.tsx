@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
 import { clippedImageState } from "../../../lib/atom";
+import React from "react";
+import Heart from "../../../assets/heart.svg?react";
 
 export default function ClippedImage() {
   const clippedImage = useRecoilValue(clippedImageState);
@@ -11,7 +13,7 @@ export default function ClippedImage() {
       ) : (
         <NoImage />
       )}
-      <ClipMask />
+      <ClipMask color="red" />
     </Container>
   );
 }
@@ -38,15 +40,15 @@ const Image = styled.div<{ img: string | ArrayBuffer; position: string }>`
   z-index: 1;
 `;
 
-const ClipMask = styled.div`
+const ClipMask = styled(Heart)<{ color: string }>`
+  width: 100%;
+  height: 100%;
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  background: url("clip.png");
-  background-size: 100% 100%;
+  z-index: 3;
+  & rect {
+  }
 `;
 
 const Container = styled.div`

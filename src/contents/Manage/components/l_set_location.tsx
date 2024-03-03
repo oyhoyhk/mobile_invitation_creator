@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import { useCallback, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { locationState } from "../../../lib/atom";
+import React from "react";
 
 export default function SetLocation() {
   const setLocation = useSetRecoilState(locationState);

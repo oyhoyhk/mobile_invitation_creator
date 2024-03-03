@@ -184,3 +184,8 @@ export const finalPhotoState = atom<{
     color: "#ffffff",
   },
 });
+
+export const backgroundColorState = atom({
+  key: "backgroundColorState",
+  default: "#ffffff",
+});

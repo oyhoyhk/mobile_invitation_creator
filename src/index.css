@@ -1,12 +1,12 @@
 @font-face {
   font-family: "snellBT";
-  src: url("snellBT-Regular.woff") format("woff");
+  src: url("SnellBT-Regular.woff") format("woff");
   font-weight: normal;
 }
 
 @font-face {
   font-family: "snellBT";
-  src: url("snellBT-Bold.woff") format("woff");
+  src: url("SnellBT-Bold.woff") format("woff");
   font-weight: bold;
 }
 

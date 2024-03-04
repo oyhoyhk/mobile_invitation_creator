@@ -13,8 +13,10 @@ export default function Family() {
       <Text>
         {!familyInfo.groom.father.alive ? (
           <Mum />
-        ) : (
+        ) : !familyInfo.groom.father.alive || !familyInfo.bride.father.alive ? (
           <span style={{ width: "15px", height: "15px", margin: 0 }} />
+        ) : (
+          ""
         )}
         <b
           className={familyInfo.groom.father.name ? "" : "empty"}
@@ -25,8 +27,10 @@ export default function Family() {
         <span>•</span>
         {!familyInfo.groom.mother.alive ? (
           <Mum />
-        ) : (
+        ) : !familyInfo.groom.mother.alive || !familyInfo.bride.mother.alive ? (
           <span style={{ width: "15px", height: "15px", margin: 0 }} />
+        ) : (
+          ""
         )}
         <b
           className={familyInfo.groom.mother.name ? "" : "empty"}
@@ -50,8 +54,10 @@ export default function Family() {
       <Text>
         {!familyInfo.bride.father.alive ? (
           <Mum />
-        ) : (
+        ) : !familyInfo.bride.father.alive || !familyInfo.groom.father.alive ? (
           <span style={{ width: "15px", height: "15px", margin: 0 }} />
+        ) : (
+          ""
         )}
         <b
           className={familyInfo.bride.father.name ? "" : "empty"}
@@ -62,8 +68,10 @@ export default function Family() {
         <span>•</span>
         {!familyInfo.bride.mother.alive ? (
           <Mum />
-        ) : (
+        ) : !familyInfo.bride.mother.alive || !familyInfo.groom.mother.alive ? (
           <span style={{ width: "15px", height: "15px", margin: 0 }} />
+        ) : (
+          ""
         )}
         <b
           className={familyInfo.bride.mother.name ? "" : "empty"}

@@ -9,7 +9,10 @@ export default function Name() {
   return (
     <Container>
       <div>
-        <Block className="cursive" style={{ fontSize: "14px" }}>
+        <Block
+          className="cursive"
+          style={{ fontSize: "14px", marginLeft: "10px" }}
+        >
           groom
         </Block>
         <Block
@@ -25,7 +28,10 @@ export default function Name() {
       </div>
       <Line />
       <div>
-        <Block className="cursive" style={{ fontSize: "14px" }}>
+        <Block
+          className="cursive"
+          style={{ fontSize: "14px", letterSpacing: "-0.3px" }}
+        >
           bride
         </Block>
         <Block
@@ -34,6 +40,7 @@ export default function Name() {
             height: "30px",
             letterSpacing: "5px",
             fontSize: "16px",
+            fontWeight: 600,
           }}
         >
           {bride}

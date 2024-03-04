@@ -56,5 +56,5 @@ const Container = styled.div`
   height: 320px;
   position: relative;
   margin: 0 auto;
-  margin-top: var(--margin-top);
+  margin-top: 15px;
 `;

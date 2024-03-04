@@ -58,8 +58,8 @@ const HeartSVG = styled(Heart)<{ color: string; opacity: number }>`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   z-index: 1;
   opacity: ${(props) => props.opacity};
   & path {
@@ -69,12 +69,13 @@ const HeartSVG = styled(Heart)<{ color: string; opacity: number }>`
 
 const Container = styled.div`
   font-size: 0.8rem;
-  width: 95%;
+  width: 80%;
   margin: 0 auto;
   margin-top: 25px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 5px;
+  font-family: "Lora", serif;
 
   & > div {
     display: flex;
@@ -104,12 +105,5 @@ const Container = styled.div`
     padding: 5px;
     position: relative;
     height: 30px;
-  }
-
-  & > .wedding {
-    background-image: url("heart.png");
-    background-size: 25px 25px;
-    background-position: center 5px;
-    background-repeat: no-repeat;
   }
 `;

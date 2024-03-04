@@ -6,9 +6,13 @@ export default function Header() {
     <Container>
       <Bird />
       <Ribbon />
-      <Text className="cursive">
+      <Text className="cursive" style={{ left: "83px", top: "108px" }}>
         We are getting
-        <br />
+      </Text>
+      <Text
+        className="cursive"
+        style={{ left: "122px", top: "144px", width: "123px" }}
+      >
         Married
       </Text>
     </Container>
@@ -16,39 +20,46 @@ export default function Header() {
 }
 
 const Bird = styled.div`
-  width: 100%;
-  height: 50px;
+  width: 339px;
+  height: 52px;
   background: url("bird.png");
   background-size: cover;
   position: absolute;
-  left: 0;
-  top: 20px;
+  left: 50%;
+  top: 17px;
+  transform: translateX(-50%);
 `;
 
 const Ribbon = styled.div`
-  width: 100%;
-  height: 200px;
+  width: 342px;
+  height: 193px;
   background: url("ribbon.png");
   background-size: cover;
   position: absolute;
-  left: 0;
-  top: 35px;
+  left: 50%;
+  top: 27px;
+  transform: translateX(-50%);
 `;
 
 const Text = styled.div`
   text-align: center;
-  font-size: 2.4rem;
+  font-size: 40px;
   position: absolute;
-  width: 100%;
-  left: 50%;
-  top: 125px;
-  transform: translateX(-50%);
+  width: 209px;
+  height: 86px;
+  left: 83px;
+  top: 108px;
+  line-height: 50px;
+  letter-spacing: -0.3px;
+  font-weight: 500;
+  white-space: nowrap;
+  font-style: italic;
 `;
 
 const Container = styled.div`
   margin: 0 auto;
   margin-top: 15px;
   width: 95%;
-  height: 240px;
+  height: 210px;
   position: relative;
 `;

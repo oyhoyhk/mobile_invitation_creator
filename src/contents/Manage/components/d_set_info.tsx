@@ -3,6 +3,7 @@ import { SetContainer } from "../../../components/common";
 import { useRecoilState } from "recoil";
 import { infoState } from "../../../lib/atom";
 import { TextField } from "@mui/material";
+import React from "react";
 
 export default function SetInfo() {
   const [info, setInfo] = useRecoilState(infoState);

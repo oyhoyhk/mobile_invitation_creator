@@ -20,12 +20,7 @@ export default function SetGallery() {
       return;
     }
 
-    setList((prev) => [
-      ...prev,
-      ...Array.from(e.target.files as FileList).map((file) =>
-        URL.createObjectURL(file)
-      ),
-    ]);
+    setList((prev) => [...prev, ...Array.from(e.target.files as FileList)]);
   };
 
   const handleDeleteImage = (id: number) => {
@@ -53,21 +48,21 @@ export default function SetGallery() {
           <ImageContainer>
             {list
               .filter((_, idx) => idx % 2 === 0)
-              .map((url, idx) => (
+              .map((file, idx) => (
                 <PreviewImage
                   key={idx}
                   idx={idx}
-                  url={url}
+                  url={URL.createObjectURL(file)}
                   onDelete={handleDeleteImage}
                 />
               ))}
             {list
               .filter((_, idx) => idx % 2 === 1)
-              .map((url, idx) => (
+              .map((file, idx) => (
                 <PreviewImage
                   key={idx}
                   idx={idx}
-                  url={url}
+                  url={URL.createObjectURL(file)}
                   onDelete={handleDeleteImage}
                 />
               ))}

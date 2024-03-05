@@ -17,7 +17,7 @@ export default function SetMainPhoto() {
       reader.onload = (event: ProgressEvent<FileReader>) => {
         const result = event.target?.result;
         if (result) {
-          setImage((prev) => ({ ...prev, image: result }));
+          setImage((prev) => ({ ...prev, image: result, file: selectedImage }));
         }
       };
       reader.readAsDataURL(selectedImage);

@@ -39,7 +39,7 @@ export default function Gallery() {
             <div>
               <img
                 key={idx}
-                src={url}
+                src={URL.createObjectURL(url)}
                 alt="preview"
                 width="150px"
                 draggable={false}

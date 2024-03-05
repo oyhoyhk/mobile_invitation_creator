@@ -11,11 +11,13 @@ export const nameState = atom({
 
 export const clippedImageState = atom<{
   image: string | ArrayBuffer | null;
+  file: File | null;
   position: string;
 }>({
   key: "clippedImageState",
   default: {
     image: null,
+    file: null,
     position: "50% 50%",
   },
 });
@@ -35,11 +37,13 @@ export const firstDescriptionState = atom({
 
 export const mainPhotoState = atom<{
   image: string | ArrayBuffer | null;
+  file: File | null;
   position: string;
 }>({
   key: "mainPhotoState",
   default: {
     image: null,
+    file: null,
     position: "50% 50%",
   },
 });
@@ -80,6 +84,7 @@ export const familyState = atom({
 export const twoPhotoState = atom<
   {
     image: string | ArrayBuffer | null;
+    file: File | null;
     position: string;
   }[]
 >({
@@ -87,10 +92,12 @@ export const twoPhotoState = atom<
   default: [
     {
       image: null,
+      file: null,
       position: "50% 50%",
     },
     {
       image: null,
+      file: null,
       position: "50% 50%",
     },
   ],
@@ -172,6 +179,7 @@ export const attendanceMessageState = atom({
 
 export const finalPhotoState = atom<{
   image: string | ArrayBuffer | null;
+  file: File | null;
   position: string;
   text: string;
   color: string;
@@ -179,6 +187,7 @@ export const finalPhotoState = atom<{
   key: "finalPhotoState",
   default: {
     image: null,
+    file: null,
     position: "50% 50%",
     text: "",
     color: "#ffffff",
@@ -192,7 +201,7 @@ export const backgroundColorState = atom({
 
 export const galleryListState = atom({
   key: "galleryListState",
-  default: [] as string[],
+  default: [] as File[],
 });
 
 export const dateHeartState = atom({

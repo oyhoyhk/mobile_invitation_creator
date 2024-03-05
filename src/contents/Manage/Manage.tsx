@@ -16,6 +16,7 @@ import SetAccountInfo from "./components/n_set_account_info";
 import SetAttandanceMessage from "./components/o_set_attendance";
 import SetFinalPhoto from "./components/q_set_final_photo";
 import React from "react";
+import SubmitButton from "./components/s_button";
 
 export default function Manage() {
   return (
@@ -37,6 +38,7 @@ export default function Manage() {
       <SetAccountInfo />
       <SetAttandanceMessage />
       <SetFinalPhoto />
+      <SubmitButton />
     </Container>
   );
 }

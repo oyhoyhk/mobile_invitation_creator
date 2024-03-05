@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import { useRef } from "react";
 import { twoPhotoState } from "../../../lib/atom";
 import { useRecoilState } from "recoil";
+import React from "react";
 
 export default function SetTwoPhotos() {
   const refs = useRef<Array<HTMLInputElement | null>>([]);
@@ -21,7 +22,11 @@ export default function SetTwoPhotos() {
         if (result) {
           setImages((prev) => {
             const newImages = [...prev];
-            newImages[index] = { ...newImages[index], image: result };
+            newImages[index] = {
+              ...newImages[index],
+              file: selectedImage,
+              image: result,
+            };
             return newImages;
           });
         }

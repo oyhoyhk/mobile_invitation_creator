@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { finalPhotoState } from "../../../lib/atom";
 import { Button } from "@mui/material";
+import React from "react";
 
 const placeholder = `ex) 저희의 새로운 시작을
 함께 해주시는 모든 분들께
@@ -21,7 +22,11 @@ export default function SetFinalPhoto() {
       reader.onload = (event: ProgressEvent<FileReader>) => {
         const result = event.target?.result;
         if (result) {
-          setFinalPhoto((prev) => ({ ...prev, image: result }));
+          setFinalPhoto((prev) => ({
+            ...prev,
+            file: selectedImage,
+            image: result,
+          }));
         }
       };
       reader.readAsDataURL(selectedImage);

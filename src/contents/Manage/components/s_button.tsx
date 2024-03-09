@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 import {
   accountInfoState,
   attendanceMessageState,
+  backgroundColorState,
   clippedImageState,
   dateState,
   familyState,
@@ -23,6 +24,7 @@ import dayjs from "dayjs";
 
 export default function SubmitButton() {
   const id = new Date().getTime();
+  const themeColor = useRecoilValue(backgroundColorState);
   const name = useRecoilValue(nameState);
   const weddingInfo = useRecoilValue(infoState);
   const firstDescription = useRecoilValue(firstDescriptionState);
@@ -42,7 +44,8 @@ export default function SubmitButton() {
 
   const onSubmit = () => {
     const formData = new FormData();
-    formData.append("id", id.toString());
+    formData.append("id", id.toString() + "-" + name.groom + "-" + name.bride);
+    formData.append("themeColor", themeColor);
     formData.append("name", JSON.stringify(name));
     formData.append("weddingInfo", JSON.stringify(weddingInfo));
     formData.append("firstDescription", firstDescription);
@@ -62,6 +65,9 @@ export default function SubmitButton() {
     gallery.forEach((file) => {
       formData.append("gallery", file);
     });
+    formData.append("finalPhoto", finalPhoto.file as Blob);
+    formData.append("finalPhotoColor", finalPhoto.color);
+    formData.append("finalPhotoText", finalPhoto.text);
 
     axios.post(import.meta.env.VITE_SERVER_URL + "/api/wedding", formData);
   };

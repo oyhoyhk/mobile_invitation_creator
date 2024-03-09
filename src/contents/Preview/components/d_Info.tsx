@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
 import { infoState } from "../../../lib/atom";
+import React from "react";
 
 export default function Info() {
   const { time, location } = useRecoilValue(infoState);

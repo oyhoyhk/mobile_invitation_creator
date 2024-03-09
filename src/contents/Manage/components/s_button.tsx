@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { useRecoilValue } from "recoil";
+import { v4 as uuidv4 } from "uuid";
 import {
   accountInfoState,
   attendanceMessageState,
@@ -23,7 +24,6 @@ import axios from "axios";
 import dayjs from "dayjs";
 
 export default function SubmitButton() {
-  const id = new Date().getTime();
   const themeColor = useRecoilValue(backgroundColorState);
   const name = useRecoilValue(nameState);
   const weddingInfo = useRecoilValue(infoState);
@@ -44,7 +44,7 @@ export default function SubmitButton() {
 
   const onSubmit = () => {
     const formData = new FormData();
-    formData.append("id", id.toString() + "-" + name.groom + "-" + name.bride);
+    formData.append("id", uuidv4());
     formData.append("themeColor", themeColor);
     formData.append("name", JSON.stringify(name));
     formData.append("weddingInfo", JSON.stringify(weddingInfo));

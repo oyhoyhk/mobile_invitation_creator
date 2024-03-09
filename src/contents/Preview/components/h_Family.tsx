@@ -20,7 +20,7 @@ export default function Family() {
         )}
         <b
           className={familyInfo.groom.father.name ? "" : "empty"}
-          style={{ width: "50px" }}
+          style={{ width: "60px" }}
         >
           {familyInfo.groom.father.name || "신랑 父"}
         </b>
@@ -34,7 +34,7 @@ export default function Family() {
         )}
         <b
           className={familyInfo.groom.mother.name ? "" : "empty"}
-          style={{ width: "50px" }}
+          style={{ width: "60px" }}
         >
           {" "}
           {familyInfo.groom.mother.name || "신랑 母"}
@@ -61,7 +61,7 @@ export default function Family() {
         )}
         <b
           className={familyInfo.bride.father.name ? "" : "empty"}
-          style={{ width: "50px" }}
+          style={{ width: "60px" }}
         >
           {familyInfo.bride.father.name || "신부 父"}
         </b>
@@ -75,7 +75,7 @@ export default function Family() {
         )}
         <b
           className={familyInfo.bride.mother.name ? "" : "empty"}
-          style={{ width: "50px" }}
+          style={{ width: "60px" }}
         >
           {familyInfo.bride.mother.name || "신부 母"}
         </b>

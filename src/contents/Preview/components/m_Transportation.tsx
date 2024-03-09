@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
 import { transportationState } from "../../../lib/atom";
+import React from "react";
 
 const numberMapper = "①②③④⑤⑥⑦⑧⑨⑩";
 

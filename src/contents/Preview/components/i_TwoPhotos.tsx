@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
 import { twoPhotoState } from "../../../lib/atom";
+import React from "react";
 
 export default function TwoPhotos() {
   const images = useRecoilValue(twoPhotoState);

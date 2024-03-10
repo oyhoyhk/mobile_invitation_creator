@@ -117,6 +117,14 @@ export const locationState = atom({
   },
 });
 
+export const latlngState = atom({
+  key: "latlngState",
+  default: {
+    x: 0,
+    y: 0,
+  },
+});
+
 export const transportationState = atom<{
   [key: string]: {
     name: string;

@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 import { CustomDivider } from "../Preview";
 import useNaverMap from "../../../lib/hooks/useNaverMap";
 import { useEffect, useRef } from "react";
-import { useRecoilValue } from "recoil";
-import { locationState } from "../../../lib/atom";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { latlngState, locationState } from "../../../lib/atom";
 import React from "react";
 
 const buttons = [
@@ -26,6 +26,7 @@ export default function Location() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const naver: any = useNaverMap();
   const locationInfo = useRecoilValue(locationState);
+  const setLatLng = useSetRecoilState(latlngState);
   const ref = useRef<HTMLDivElement>(null);
   const [roadAddress, setRoadAddress] = React.useState("");
 
@@ -48,6 +49,7 @@ export default function Location() {
         const [address] = response.v2.addresses;
         const [x, y] = [address.x, address.y];
         setRoadAddress(address.roadAddress);
+        setLatLng(() => ({ x, y }));
 
         const map = new naver.maps.Map(ref.current, {
           center: new naver.maps.LatLng(y, x),

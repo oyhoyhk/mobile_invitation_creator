@@ -13,6 +13,7 @@ import {
   firstDescriptionState,
   galleryListState,
   infoState,
+  latlngState,
   locationState,
   mainPhotoState,
   nameState,
@@ -32,6 +33,7 @@ export default function SubmitButton() {
   const familyInfo = useRecoilValue(familyState);
   const date = useRecoilValue(dateState);
   const locationInfo = useRecoilValue(locationState);
+  const latlng = useRecoilValue(latlngState);
   const transportInfo = useRecoilValue(transportationState);
   const accountInfo = useRecoilValue(accountInfoState);
   const attendanceMessage = useRecoilValue(attendanceMessageState);
@@ -52,7 +54,10 @@ export default function SubmitButton() {
     formData.append("secondDescription", secondDescription);
     formData.append("familyInfo", JSON.stringify(familyInfo));
     formData.append("date", (date as dayjs.Dayjs).toDate().toString());
-    formData.append("locationInfo", JSON.stringify(locationInfo));
+    formData.append(
+      "locationInfo",
+      JSON.stringify({ ...locationInfo, ...latlng })
+    );
     formData.append("transportInfo", JSON.stringify(transportInfo));
     formData.append("accountInfo", JSON.stringify(accountInfo));
     formData.append("attendanceMessage", attendanceMessage);

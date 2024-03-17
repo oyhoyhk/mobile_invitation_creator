@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
-import { attendanceMessageState } from "../../../lib/atom";
+import { attendanceMessageState, buttonColorState } from "../../../lib/atom";
 import React from "react";
 
 const placeholder = `ex) 모든 분들께
@@ -12,7 +12,7 @@ const placeholder = `ex) 모든 분들께
 
 export default function Attendance() {
   const attendanceMessage = useRecoilValue(attendanceMessageState);
-
+  const buttonColor = useRecoilValue(buttonColorState);
   return (
     <Container>
       <legend>참석의사 전달하기</legend>
@@ -21,14 +21,14 @@ export default function Attendance() {
       ) : (
         <p className="empty">{placeholder}</p>
       )}
-      <Button>참석의사 전달하기</Button>
+      <Button color={buttonColor}>참석의사 전달하기</Button>
     </Container>
   );
 }
 
-const Button = styled.button`
+const Button = styled.button<{ color: string }>`
   border: 1px solid rgba(129, 122, 94, 0.3);
-  background: #f5e3e2;
+  background: ${({ color }) => color};
   border-radius: 28px;
   height: 36px;
   width: 274px;

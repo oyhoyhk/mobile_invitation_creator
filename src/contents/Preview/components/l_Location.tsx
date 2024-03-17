@@ -4,7 +4,11 @@ import { CustomDivider } from "../Preview";
 import useNaverMap from "../../../lib/hooks/useNaverMap";
 import { useEffect, useRef } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { latlngState, locationState } from "../../../lib/atom";
+import {
+  buttonColorState,
+  latlngState,
+  locationState,
+} from "../../../lib/atom";
 import React from "react";
 
 const buttons = [
@@ -29,10 +33,10 @@ export default function Location() {
   const setLatLng = useSetRecoilState(latlngState);
   const ref = useRef<HTMLDivElement>(null);
   const [roadAddress, setRoadAddress] = React.useState("");
+  const buttonColor = useRecoilValue(buttonColorState);
 
   useEffect(() => {
     if (!naver || !ref.current || !locationInfo.address) return;
-    console.log("search, naver : ", naver);
     naver.maps.Service.geocode(
       {
         query: locationInfo.address,
@@ -44,7 +48,6 @@ export default function Location() {
         if (response.v2.meta.totalCount === 0) {
           return alert("totalCount" + response.v2.meta.totalCount);
         }
-        console.log(status, response);
 
         const [address] = response.v2.addresses;
         const [x, y] = [address.x, address.y];
@@ -81,7 +84,7 @@ export default function Location() {
         {"Tel. " + (locationInfo.phone || "ex) 02-000-000")}
       </Text>
       <MapContainer ref={ref} />
-      <ButtonContainer>
+      <ButtonContainer color={buttonColor}>
         {buttons.map((info) => (
           <Button key={info.name}>
             <Icon img={info.img} />
@@ -93,12 +96,12 @@ export default function Location() {
   );
 }
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled.div<{ color: string }>`
   width: 90%;
   height: 40px;
   border-radius: 0.8rem;
   border: 1px solid rgba(129, 122, 94, 0.3);
-  background: #f5e3e2;
+  background: ${({ color }) => color};
   margin: 0 auto;
   margin-top: 25px;
   display: flex;

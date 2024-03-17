@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
-import { accountInfoState } from "../../../lib/atom";
+import { accountInfoState, buttonColorState } from "../../../lib/atom";
 import React from "react";
 
 export default function AccountInfo() {
@@ -9,6 +9,7 @@ export default function AccountInfo() {
   너그러운 마음으로 양해 부탁드립니다.`;
 
   const { message } = useRecoilValue(accountInfoState);
+  const buttonColor = useRecoilValue(buttonColorState);
 
   return (
     <Container>
@@ -18,8 +19,8 @@ export default function AccountInfo() {
       ) : (
         <Annoucement className="empty">{placeholder}</Annoucement>
       )}
-      <Button>신랑측 계좌번호</Button>
-      <Button>신부측 계좌번호</Button>
+      <Button color={buttonColor}>신랑측 계좌번호</Button>
+      <Button color={buttonColor}>신부측 계좌번호</Button>
     </Container>
   );
 }
@@ -40,12 +41,12 @@ const Annoucement = styled.div`
     color: var(--gray-color);
   }
 `;
-const Button = styled.div`
+const Button = styled.div<{ color: string }>`
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f5e3e2;
+  background: ${({ color }) => color};
   border-radius: 0.5rem;
   width: 100%;
   height: 50px;

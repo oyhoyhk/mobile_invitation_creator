@@ -22,10 +22,11 @@ import React from "react";
 import Candle from "../../assets/candle.svg?react";
 import Pigeon from "../../assets/pigeon.svg?react";
 import { useRecoilValue } from "recoil";
-import { backgroundColorState } from "../../lib/atom";
+import { backgroundColorState, buttonColorState } from "../../lib/atom";
 
 export default function Preview() {
   const backgroundColor = useRecoilValue(backgroundColorState);
+  const buttonColor = useRecoilValue(buttonColorState);
   return (
     <Container backgroundColor={backgroundColor}>
       <Header />
@@ -82,7 +83,7 @@ export default function Preview() {
       <Attendance />
       <GuestBook />
       <FinalPhoto />
-      <StyledButton>공유하기</StyledButton>
+      <StyledButton color={buttonColor}>공유하기</StyledButton>
       <Footer />
     </Container>
   );

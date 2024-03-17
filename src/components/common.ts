@@ -9,12 +9,12 @@ export const StyledContainer = styled.div`
   background: #575757;
 `;
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<{ color: string }>`
   width: 333px;
   height: 36px;
   border-radius: 28px;
   border: 1px solid rgba(129, 122, 94, 0.3);
-  background: #f5e3e2;
+  background: ${({ color }) => color};
   margin-top: var(--margin-top);
   cursor: pointer;
 `;

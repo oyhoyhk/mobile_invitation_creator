@@ -219,3 +219,8 @@ export const dateHeartState = atom({
     opacity: "1",
   },
 });
+
+export const buttonColorState = atom({
+  key: "buttonColorState",
+  default: "#f5e3e2",
+});

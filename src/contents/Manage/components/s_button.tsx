@@ -6,6 +6,7 @@ import {
   accountInfoState,
   attendanceMessageState,
   backgroundColorState,
+  buttonColorState,
   clippedImageState,
   dateState,
   familyState,
@@ -26,6 +27,7 @@ import dayjs from "dayjs";
 
 export default function SubmitButton() {
   const themeColor = useRecoilValue(backgroundColorState);
+  const buttonColor = useRecoilValue(buttonColorState);
   const name = useRecoilValue(nameState);
   const weddingInfo = useRecoilValue(infoState);
   const firstDescription = useRecoilValue(firstDescriptionState);
@@ -48,6 +50,7 @@ export default function SubmitButton() {
     const formData = new FormData();
     formData.append("id", uuidv4());
     formData.append("themeColor", themeColor);
+    formData.append("buttonColor", buttonColor);
     formData.append("name", JSON.stringify(name));
     formData.append("weddingInfo", JSON.stringify(weddingInfo));
     formData.append("firstDescription", firstDescription);

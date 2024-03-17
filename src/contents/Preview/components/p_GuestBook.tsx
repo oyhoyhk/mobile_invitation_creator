@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
+import { useRecoilValue } from "recoil";
+import { buttonColorState } from "../../../lib/atom";
 
 const data = [
   {
@@ -16,10 +18,11 @@ const data = [
 ];
 
 export default function GuestBook() {
+  const buttonColor = useRecoilValue(buttonColorState);
   return (
     <Container>
       <legend>방명록</legend>
-      <EditButton />
+      <EditButton color={buttonColor} />
       {data.map((info, index) => (
         <GuestBookInfo key={index}>
           <Title>
@@ -32,7 +35,7 @@ export default function GuestBook() {
           <Content>{info.content}</Content>
         </GuestBookInfo>
       ))}
-      <Button>더보기</Button>
+      <Button color={buttonColor}>더보기</Button>
     </Container>
   );
 }
@@ -95,11 +98,11 @@ const Content = styled.p`
   margin-top: 25px;
 `;
 
-const EditButton = styled.button`
+const EditButton = styled.button<{ color: string }>`
   width: 50px;
   height: 33px;
   border: 1px solid rgba(129, 122, 94, 0.3);
-  background: #f5e3e2;
+  background: ${({ color }) => color};
   border-radius: 5px;
   background-image: url("edit.png");
   background-repeat: no-repeat;
@@ -126,12 +129,12 @@ const Container = styled.fieldset`
   }
 `;
 
-const Button = styled.button`
+const Button = styled.button<{ color: string }>`
   width: 274px;
   height: 36px;
   border-radius: 28px;
   border: 1px solid rgba(129, 122, 94, 0.3);
-  background: #f5e3e2;
+  background: ${({ color }) => color};
   cursor: pointer;
   margin-top: 25px;
 `;

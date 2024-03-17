@@ -8,6 +8,7 @@ import {
   backgroundColorState,
   buttonColorState,
   clippedImageState,
+  dateHeartState,
   dateState,
   familyState,
   finalPhotoState,
@@ -45,6 +46,7 @@ export default function SubmitButton() {
   const twoPhotos = useRecoilValue(twoPhotoState);
   const gallery = useRecoilValue(galleryListState);
   const finalPhoto = useRecoilValue(finalPhotoState);
+  const heartColor = useRecoilValue(dateHeartState);
 
   const onSubmit = () => {
     const formData = new FormData();
@@ -56,6 +58,7 @@ export default function SubmitButton() {
     formData.append("firstDescription", firstDescription);
     formData.append("secondDescription", secondDescription);
     formData.append("familyInfo", JSON.stringify(familyInfo));
+    formData.append("heartInfo", JSON.stringify(heartColor));
     formData.append("date", (date as dayjs.Dayjs).toDate().toString());
     formData.append(
       "locationInfo",

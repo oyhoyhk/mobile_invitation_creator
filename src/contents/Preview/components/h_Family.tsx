@@ -7,6 +7,12 @@ import Mum from "../../../assets/mum.svg?react";
 export default function Family() {
   const familyInfo = useRecoilValue(familyState);
   const { groom, bride } = useRecoilValue(nameState);
+  const maxLength = Math.max(
+    familyInfo.bride.father.name.length,
+    familyInfo.bride.mother.name.length,
+    familyInfo.groom.father.name.length,
+    familyInfo.groom.mother.name.length
+  );
 
   return (
     <Container>
@@ -20,7 +26,7 @@ export default function Family() {
         )}
         <b
           className={familyInfo.groom.father.name ? "" : "empty"}
-          style={{ width: "60px" }}
+          style={{ width: maxLength * 15 + "px", textAlign: "right" }}
         >
           {familyInfo.groom.father.name || "신랑 父"}
         </b>
@@ -34,7 +40,7 @@ export default function Family() {
         )}
         <b
           className={familyInfo.groom.mother.name ? "" : "empty"}
-          style={{ width: "60px" }}
+          style={{ width: maxLength * 15 + "px", textAlign: "right" }}
         >
           {" "}
           {familyInfo.groom.mother.name || "신랑 母"}
@@ -42,7 +48,7 @@ export default function Family() {
         <span style={{ fontSize: "12px" }}>의</span>
         <b
           className={familyInfo.groom.position ? "" : "empty"}
-          style={{ width: "46px", textAlign: "left" }}
+          style={{ width: "30px", textAlign: "left" }}
         >
           {familyInfo.groom.position || "호칭"}
         </b>
@@ -61,7 +67,7 @@ export default function Family() {
         )}
         <b
           className={familyInfo.bride.father.name ? "" : "empty"}
-          style={{ width: "60px" }}
+          style={{ width: maxLength * 15 + "px", textAlign: "right" }}
         >
           {familyInfo.bride.father.name || "신부 父"}
         </b>
@@ -75,14 +81,14 @@ export default function Family() {
         )}
         <b
           className={familyInfo.bride.mother.name ? "" : "empty"}
-          style={{ width: "60px" }}
+          style={{ width: maxLength * 15 + "px", textAlign: "right" }}
         >
           {familyInfo.bride.mother.name || "신부 母"}
         </b>
         <span style={{ fontSize: "12px" }}>의</span>
         <b
           className={familyInfo.bride.position ? "" : "empty"}
-          style={{ width: "46px", textAlign: "left" }}
+          style={{ width: "30px", textAlign: "left" }}
         >
           {familyInfo.bride.position || "호칭"}
         </b>
@@ -104,7 +110,7 @@ const Text = styled.div`
     margin-bottom: 25px;
   }
   & b {
-    margin: 0 5px;
+    margin: 0;
     overflow: hidden;
     white-space: nowrap;
     &.empty {

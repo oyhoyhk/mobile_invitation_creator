@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 import { useRecoilValue } from "recoil";
-import { clippedImageState } from "../../../lib/atom";
+import { backgroundColorState, clippedImageState } from "../../../lib/atom";
 import React from "react";
 import Heart from "../../../assets/heartClip.svg?react";
 
 export default function ClippedImage() {
   const clippedImage = useRecoilValue(clippedImageState);
+  const backgroundColor = useRecoilValue(backgroundColorState);
   return (
     <Container>
       {clippedImage.image ? (
@@ -13,7 +14,7 @@ export default function ClippedImage() {
       ) : (
         <NoImage />
       )}
-      <ClipMask color="red" />
+      {/* <ClipMask color={backgroundColor} /> */}
     </Container>
   );
 }
@@ -47,7 +48,8 @@ const ClipMask = styled(Heart)<{ color: string }>`
   left: 0;
   top: 0;
   z-index: 3;
-  & rect {
+  & > g {
+    fill: ${(props) => props.color};
   }
 `;
 

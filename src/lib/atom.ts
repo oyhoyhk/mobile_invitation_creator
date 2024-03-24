@@ -9,6 +9,28 @@ export const nameState = atom({
   },
 });
 
+export const topLabelState = atom<{
+  image: string | null;
+  file: File | null;
+}>({
+  key: "topLabelState",
+  default: {
+    image: null,
+    file: null,
+  },
+});
+
+export const topImageState = atom<{
+  image: string | null;
+  file: File | null;
+}>({
+  key: "topImageState",
+  default: {
+    image: null,
+    file: null,
+  },
+});
+
 export const clippedImageState = atom<{
   image: string | ArrayBuffer | null;
   file: File | null;

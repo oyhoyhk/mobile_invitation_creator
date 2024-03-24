@@ -1,11 +1,16 @@
 import styled from "@emotion/styled";
 import React from "react";
+import { useRecoilValue } from "recoil";
+import { topImageState, topLabelState } from "../../../lib/atom";
 
 export default function Header() {
+  const topLabel = useRecoilValue(topLabelState);
+  const topImage = useRecoilValue(topImageState);
+
   return (
     <Container>
-      <Bird />
-      <Ribbon />
+      {topLabel.image && <TopLabel image={topLabel.image} />}
+      {topImage.image && <TopImage image={topImage.image} />}
       <Text className="cursive" style={{ left: "83px", top: "108px" }}>
         We are getting
       </Text>
@@ -19,10 +24,10 @@ export default function Header() {
   );
 }
 
-const Bird = styled.div`
+const TopLabel = styled.div<{ image: string }>`
   width: 339px;
   height: 52px;
-  background: url("bird.png");
+  background: url(${(props) => props.image});
   background-size: cover;
   position: absolute;
   left: 50%;
@@ -30,10 +35,10 @@ const Bird = styled.div`
   transform: translateX(-50%);
 `;
 
-const Ribbon = styled.div`
+const TopImage = styled.div<{ image: string }>`
   width: 342px;
   height: 193px;
-  background: url("ribbon.png");
+  background: url(${(props) => props.image});
   background-size: cover;
   position: absolute;
   left: 50%;

@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { useRecoilValue } from "recoil";
-import { v4 as uuidv4 } from "uuid";
 import {
   accountInfoState,
   attendanceMessageState,
@@ -20,6 +19,8 @@ import {
   mainPhotoState,
   nameState,
   secondDescriptionState,
+  topImageState,
+  topLabelState,
   transportationState,
   twoPhotoState,
 } from "../../../lib/atom";
@@ -27,8 +28,11 @@ import axios from "axios";
 import dayjs from "dayjs";
 
 export default function SubmitButton() {
+  const [id, setId] = useState<string | null>(null);
   const themeColor = useRecoilValue(backgroundColorState);
   const buttonColor = useRecoilValue(buttonColorState);
+  const topLabel = useRecoilValue(topLabelState);
+  const topImage = useRecoilValue(topImageState);
   const name = useRecoilValue(nameState);
   const weddingInfo = useRecoilValue(infoState);
   const firstDescription = useRecoilValue(firstDescriptionState);
@@ -48,9 +52,20 @@ export default function SubmitButton() {
   const finalPhoto = useRecoilValue(finalPhotoState);
   const heartColor = useRecoilValue(dateHeartState);
 
-  const onSubmit = () => {
+  useEffect(() => {}, []);
+
+  const onSubmit = async () => {
+    const { data: id } = await axios.get(
+      import.meta.env.VITE_SERVER_URL + "/api/key"
+    );
+    if (!id) {
+      alert("청첩장 생성에 실패했습니다. - 서버 오류");
+      return;
+    }
     const formData = new FormData();
-    formData.append("id", uuidv4());
+    formData.append("id", id);
+    formData.append("topLabel", topLabel.file as Blob);
+    formData.append("topImage", topImage.file as Blob);
     formData.append("themeColor", themeColor);
     formData.append("buttonColor", buttonColor);
     formData.append("name", JSON.stringify(name));
@@ -80,7 +95,15 @@ export default function SubmitButton() {
     formData.append("finalPhotoColor", finalPhoto.color);
     formData.append("finalPhotoText", finalPhoto.text);
 
-    axios.post(import.meta.env.VITE_SERVER_URL + "/api/wedding", formData);
+    try {
+      await axios.post(
+        import.meta.env.VITE_SERVER_URL + "/api/wedding",
+        formData
+      );
+      alert("청첩장이 생성되었습니다.");
+    } catch (e) {
+      alert("청첩장 생성에 실패했습니다. - 서버 오류");
+    }
   };
   return (
     <Button
